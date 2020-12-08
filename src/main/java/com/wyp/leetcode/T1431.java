@@ -2,7 +2,10 @@ package com.wyp.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * 给你一个数组 candies 和一个整数 extraCandies ，其中 candies[i] 代表第 i 个孩子拥有的糖果数目。
@@ -59,12 +62,40 @@ public class T1431 {
             return list;
         }
         for (int candy : candies) {
-            if (max - candy <= extraCandies) {
-                list.add(true);
-            }else {
-                list.add(false);
-            }
+            list.add(max - candy <= extraCandies);
         }
         return list;
     }
+
+    // public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+    //     List<Boolean> list = new ArrayList<>();
+    //     // int max = Arrays.stream(candies).max().getAsInt();
+    //     Integer[] array = IntStream.of(candies).boxed().collect(Collectors.toList()).toArray(new Integer[0]);
+    //     int max = Collections.max(Arrays.asList(array));
+    //     if(max <= extraCandies){
+    //         for (int i = 0; i < candies.length; i++) {
+    //             list.add(true);
+    //         }
+    //         return list;
+    //     }
+    //     for (int candy : candies) {
+    //         list.add(max - candy <= extraCandies);
+    //     }
+    //     return list;
+    // }
+
+    // public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
+    //     List<Boolean> list = new ArrayList<>();
+    //     int max = Arrays.stream(candies).max().getAsInt();
+    //     if(max <= extraCandies){
+    //         for (int i = 0; i < candies.length; i++) {
+    //             list.add(true);
+    //         }
+    //         return list;
+    //     }
+    //     for (int candy : candies) {
+    //         list.add(max - candy <= extraCandies);
+    //     }
+    //     return list;
+    // }
 }
