@@ -18,6 +18,8 @@ public class KnapsackProblem {
         int n = val.length;
         // 不同物品个数n、不同背包容量m下，背包可以装下物品的最大价值记录表
         int[][] memo = new int[n + 1][m + 1];
+        // path 二维数组记录存放物品的情况
+        int[][] path = new int[n + 1][m + 1];
 
         for (int i = 0; i < n; i++) {
             memo[i][0] = 0;
@@ -38,7 +40,12 @@ public class KnapsackProblem {
                     //       2个价值的和 即为 该方案下 背包所能放下物品的最大价值
                     int v2 = val[i - 1] + memo[i - 1][j - w[i - 1]];
                     // 方案1 和 方案2 两种不同装法的最大值 即为 最终 背包所能放下物品的最大价值
-                    memo[i][j] = Math.max(v1, v2);
+                    if (v1 < v2) {
+                        memo[i][j] = v2;
+                        path[i][j] = 1;
+                    } else {
+                        memo[i][j] = v1;
+                    }
                 }
             }
         }
@@ -52,5 +59,27 @@ public class KnapsackProblem {
             System.out.println();
         }
 
+        // for (int i = 0; i < path.length; i++) {
+        //     for (int j = 0; j < path[i].length; j++) {
+        //         if (path[i][j] == 1) {
+        //             System.out.printf("第%d个商品放入到背包\n", i);
+        //         }
+        //     }
+        // }
+
+        System.out.println("================");
+
+        //行的最大下标
+        int i = path.length - 1;
+        //列的最大下标
+        int j = path[0].length - 1;
+        //从path的最后开始找
+        while (i > 0 && j > 0) {
+            if (path[i][j] == 1) {
+                System.out.printf("第%d个商品放入到背包\n", i);
+                j -= w[i - 1];
+            }
+            i--;
+        }
     }
 }
