@@ -21,6 +21,26 @@ public class KnapsackProblem {
         // path 二维数组记录存放物品的情况
         int[][] path = new int[n + 1][m + 1];
 
+        method01(w, val, m, n, memo, path);
+
+        int[][] vw = new int[n][2];
+        vw[0][0] = 1;
+        vw[0][1] = 1500;
+        vw[1][0] = 4;
+        vw[1][1] = 3000;
+        vw[2][0] = 3;
+        vw[2][1] = 2000;
+        System.out.println("=======vw二位数组============");
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < vw[i].length; j++) {
+                System.out.printf(vw[i][j] + " ");
+            }
+            System.out.println();
+        }
+        method02(m, n, vw);
+    }
+
+    private static void method01(int[] w, int[] val, int m, int n, int[][] memo, int[][] path) {
         for (int i = 0; i < n; i++) {
             memo[i][0] = 0;
         }
@@ -81,5 +101,32 @@ public class KnapsackProblem {
             }
             i--;
         }
+    }
+
+    /**
+     * 代码中的类名、方法名、参数名已经指定，请勿修改，直接返回方法规定的值即可
+     * 计算01背包问题的结果
+     *
+     * @param V  int整型 背包的体积
+     * @param n  int整型 物品的个数
+     * @param vw int整型二维数组 第一维度为n,第二维度为2的二维数组,vw[i][0],vw[i][1]分别描述i+1个物品的重量wi, 物品的价值vi
+     * @return int整型
+     */
+    public static int method02(int V, int n, int[][] vw) {
+        // dp[n]标识背包体积为n时，能装的最大重量
+        int[] dp = new int[V + 1];
+        //物品
+        for (int i = 1; i <= n; i++) {
+            //背包容量。倒序遍历
+            for (int j = V; j > 0; j--) {
+                //放得下
+                if (j >= vw[i - 1][0]) {
+                    dp[j] = Math.max(dp[j], dp[j - vw[i - 1][0]] + vw[i - 1][1]);
+                }
+                //放不下就是原来的值
+            }
+        }
+        System.out.println("---------method02-------" + dp[V]);
+        return dp[V];
     }
 }
