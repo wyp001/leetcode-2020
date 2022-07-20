@@ -39,6 +39,13 @@ public class BadWordCheck {
         return false;
     }
 
+    /**
+     * 列举出 发布内容字符串 str 中 包含的敏感词
+     *
+     * @param str      发布内容字符串
+     * @param wordDict 敏感词列表
+     * @return
+     */
     public static List<String> queryContainsBadWord(String str, Collection<String> wordDict) {
         int n = str.length();
         boolean[] memo = new boolean[n + 1];
