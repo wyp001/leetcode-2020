@@ -1,7 +1,9 @@
 package com.wyp.leetcode;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 1941. 检查是否所有字符出现次数相同
@@ -19,14 +21,17 @@ public class T1941 {
     }
 
     public boolean areOccurrencesEqual(String s) {
-        Map<String, Integer> map = new HashMap<>();
-        for (String str : s.split("")) {
-            Integer num = map.getOrDefault(str, 0);
-            map.put(str, num + 1);
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            map.put(c, map.getOrDefault(c, 0) + 1);
         }
-        long count = map.values().stream().distinct().count();
-        if (count > 1) {
-            return false;
+        Set<Integer> uniqueValues = new HashSet<>();
+        for (Integer integer : map.values()) {
+            uniqueValues.add(integer);
+            if (uniqueValues.size() > 1) {
+                return false;
+            }
         }
         return true;
     }
