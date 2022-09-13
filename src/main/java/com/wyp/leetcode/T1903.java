@@ -23,23 +23,13 @@ public class T1903 {
 
 
     public String largestOddNumber(String num) {
-        String lastStr = num.substring(num.length() - 1);
-        if (Integer.parseInt(lastStr) % 2 == 1) {
-            return num;
-        }
-        Integer maxIndex = null;
-        String[] nStrs = num.split("");
-        for (int i = 0; i < num.split("").length; i++) {
-            long n = Integer.parseInt(nStrs[i]);
-            if (n % 2 == 1) {
-                maxIndex = i;
+        int len = num.length();
+        for (int i = len - 1; i >= 0; i--) {
+            System.out.println("num.charAt(i) = " + num.charAt(i));
+            if ((num.charAt(i) - '0') % 2 == 1) {
+                return num.substring(0, i + 1);
             }
         }
-        if (Objects.isNull(maxIndex)) {
-            return "";
-        }
-        return num.substring(0, maxIndex + 1);
+        return "";
     }
-
-
 }
