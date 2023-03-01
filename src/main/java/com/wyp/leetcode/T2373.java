@@ -52,37 +52,21 @@ public class T2373 {
             for (int j = 1; j < grid[i].length - 1; j++) {
                 int max = grid[i][j];
                 // 左上角
-                if (grid[i - 1][j - 1] > grid[i][j] && grid[i - 1][j - 1] > max) {
-                    max = grid[i - 1][j - 1];
-                }
+                max = Math.max(grid[i - 1][j - 1], max);
                 // 正上
-                if (grid[i - 1][j] > grid[i][j] && grid[i - 1][j] > max) {
-                    max = grid[i - 1][j];
-                }
+                max = Math.max(grid[i - 1][j], max);
                 // 右上角
-                if (grid[i - 1][j + 1] > grid[i][j] && grid[i - 1][j + 1] > max) {
-                    max = grid[i - 1][j + 1];
-                }
+                max = Math.max(grid[i - 1][j + 1], max);
                 // 正左
-                if (grid[i][j - 1] > grid[i][j] && grid[i][j - 1] > max) {
-                    max = grid[i][j - 1];
-                }
+                max = Math.max(grid[i][j - 1], max);
                 // 正右
-                if (grid[i][j + 1] > grid[i][j] && grid[i][j + 1] > max) {
-                    max = grid[i][j + 1];
-                }
+                max = Math.max(grid[i][j + 1], max);
                 // 左下角
-                if (grid[i + 1][j - 1] > grid[i][j] && grid[i + 1][j - 1] > max) {
-                    max = grid[i + 1][j - 1];
-                }
+                max = Math.max(grid[i + 1][j - 1], max);
                 // 正下
-                if (grid[i + 1][j] > grid[i][j] && grid[i + 1][j] > max) {
-                    max = grid[i + 1][j];
-                }
+                max = Math.max(grid[i + 1][j], max);
                 // 右下角
-                if (grid[i + 1][j + 1] > grid[i][j] && grid[i + 1][j + 1] > max) {
-                    max = grid[i + 1][j + 1];
-                }
+                max = Math.max(grid[i + 1][j + 1], max);
                 res[i - 1][j - 1] = max;
             }
         }
