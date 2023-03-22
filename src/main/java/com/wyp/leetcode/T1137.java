@@ -30,9 +30,6 @@ public class T1137 {
 
     public int tribonacci02(int n, Map<Integer, Integer> map) {
         count ++;
-        if (n <=2) {
-            return map.get(n);
-        }
         Integer res = map.get(n);
         if (res != null) {
             return res;
