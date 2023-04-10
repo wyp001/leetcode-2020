@@ -23,18 +23,28 @@ public class T2255 {
     }
 
     public int countPrefixes(String[] words, String s) {
-        Set<String> set = new HashSet<>();
-        int length = s.length();
-        for (int i = 0; i < length; i++) {
-            String prefix = s.substring(0, i +1);
-            set.add(prefix);
-        }
         int count = 0;
         for (String word : words) {
-            if (set.contains(word)) {
+            if (s.startsWith(word)) {
                 count++;
             }
         }
         return count;
     }
+
+    // public int countPrefixes(String[] words, String s) {
+    //     Set<String> set = new HashSet<>();
+    //     int length = s.length();
+    //     for (int i = 0; i < length; i++) {
+    //         String prefix = s.substring(0, i +1);
+    //         set.add(prefix);
+    //     }
+    //     int count = 0;
+    //     for (String word : words) {
+    //         if (set.contains(word)) {
+    //             count++;
+    //         }
+    //     }
+    //     return count;
+    // }
 }
