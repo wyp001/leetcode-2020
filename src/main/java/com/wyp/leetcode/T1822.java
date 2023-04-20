@@ -1,9 +1,7 @@
 package com.wyp.leetcode;
 
 /**
- * @Description:
- * @author: wyupeng
- * @date: 2023/4/20 15:45
+ * https://leetcode.cn/problems/sign-of-the-product-of-an-array/
  */
 public class T1822 {
     public static void main(String[] args) {
