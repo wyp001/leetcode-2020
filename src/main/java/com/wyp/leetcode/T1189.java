@@ -16,7 +16,7 @@ public class T1189 {
         System.out.println("res = " + res);
     }
 
-    // balloon  b1 a2 l2 o2 n1
+    // balloon  b1 a1 l2 o2 n1
     public int maxNumberOfBalloons(String text) {
         Map<Character, Integer> map = new HashMap<>();
         for (char ch : text.toCharArray()) {
